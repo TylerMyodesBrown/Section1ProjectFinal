@@ -88,6 +88,13 @@ class StoryList {
 
     return newStory;
   }
+
+
+  async removeCreatedStory(storyId){
+    this.ownStories = currentUser.ownStories.filter(s => s.storyId !== storyId);
+    console.log(currentUser.loginToken)
+  await axios.delete(`${BASE_URL}/stories/${storyId}`, {token: currentUser.loginToken});
+}
 }
 
 
@@ -220,7 +227,6 @@ class User {
 
   async removeFavorite(story) {
     this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
-    console.log(story)
     await axios.delete(`${BASE_URL}/users/${this.username}/favorites/${story.storyId}`, {token: this.loginToken})
   }
 }

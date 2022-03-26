@@ -89,3 +89,11 @@ $allStoriesList.on('click', '.favButton', async function (e) {
     await currentUser.addFavorite(thingId);
   }
 })
+
+
+$ownStoriesList.on('click', '#removeItem', async function(e){
+  const $liId = $(e.target).closest('li').attr('id');
+  console.log($liId);
+  await storyList.removeCreatedStory($liId);
+
+})

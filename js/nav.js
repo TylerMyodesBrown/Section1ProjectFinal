@@ -60,6 +60,7 @@ $navFavs.on('click', async function(e){
   if(currentUser.favorites.length !== 0){
     for(let story of currentUser.favorites){
       let thing = generateStoryMarkup(story)
+      console.log(thing);
       $favList.append(thing)
     }
   } else{
@@ -75,11 +76,13 @@ $navOwnStories.on('click', async function(){
   $ownStoriesList.empty();
   if(currentUser.ownStories.length !== 0){
     for(let story of currentUser.ownStories){
+      console.log(story)
       let thing = generateStoryMarkup(story)
+      thing.prepend('<button id="removeItem">Delete</button>')
       $ownStoriesList.append(thing)
     }
   } else{
     $ownStoriesList.append('<p>No Created Stories! Add some to get things going!</p>')
   }
-
+  $ownStoriesList.show();
 })
